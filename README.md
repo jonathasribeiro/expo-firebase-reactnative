@@ -1,76 +1,37 @@
-# Projeto Expo/React-Native/Firebase
+# Expo + Firebase Mobile App
 
-## Sobre o Projeto
+Mobile app built with **Expo**, **React Native**, and **Firebase** for authentication and realtime data.
 
-O projeto consiste numa aplicação usando Expo/React-Native com a conexão do Firebase para Autenticação e Busca de Dados no Banco de Dados
+## Features
 
-## Configurações
+- Firebase Authentication (email/password)
+- Realtime Database for progress tracking
+- Material Design UI with React Native Paper
+- Tab-based navigation
+- Cross-platform support (iOS, Android, Web)
 
-Para iniciar o Projeto Primeiramente rode em seu terminal o comando `Yarn` e depois `Expo Start`;
+## Stack
 
-### Configurações Firebase
+| Layer | Technology |
+|-------|------------|
+| Mobile | Expo + React Native |
+| Backend | Firebase Auth + Realtime DB |
+| UI | React Native Paper |
+| Navigation | React Navigation |
 
-No Arquivo `App.js` mude os dados para acesso ao Firebase
+## Getting started
 
+```bash
+npm install
+npm start
 ```
-const config = {
-      apiKey: "AIzaSyAgg_yDXt1Qoutu7hcOdXXOrFhiVBHjWeE",
-      authDomain: "start-cbaa5.firebaseapp.com",
-      databaseURL: "https://start-cbaa5.firebaseio.com",
-      projectId: "start-cbaa5",
-      storageBucket: "start-cbaa5.appspot.com",
-      messagingSenderId: "633975796254",
-      appId: "1:633975796254:web:c575d3fe2edca55338740f",
-      measurementId: "G-99DF5G1L1G"
-    };
-```
 
-O cadastro dos dados de progresso no Firebase foi feito da seguinte forma:
+> **Note:** Configure your own Firebase project credentials via environment variables. Do not commit API keys to the repository.
 
-![](/assets/images/firebase.png)
+## Use cases
 
-No Arquivo `src/pages/Dashboard/index.js` o acesso aos dados do Banco de Dados ficou da seguinte forma:
+Demonstrates mobile architecture patterns with Expo and Firebase — applicable to healthcare scheduling, consumer apps, and offline-first mobile products.
 
-```
-class Resumo extends Component {
-  constructor() {
-    super();
+## Author
 
-    this.state = {
-      progress: 0
-    };
-
-    this.database = firebase
-      .database()
-      .ref()
-      .child("progress");
-  }
-
-  componentDidMount() {
-    this.database.on("value", snap => {
-      this.setState({
-        progress: snap.val()
-      });
-    });
-  }
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.progressText}>Progresso Atual</Text>
-        <Progress.Bar
-          progress={this.state.progress / 100}
-          width={300}
-          height={80}
-          color="#7159c1"
-          borderColor="#fff"
-        />
-        <View style={styles.progress}>
-          <Text style={styles.progressNumbers}>0%</Text>
-          <Text style={styles.progressNumbers}>100%</Text>
-        </View>
-      </View>
-    );
-  }
-}
-```
+**Jonathas Ribeiro** — [LinkedIn](https://www.linkedin.com/in/jonathasribeiroreal)
